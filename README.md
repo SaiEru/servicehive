@@ -1,57 +1,47 @@
-ServiceHive
+# SlotSwapper – Peer-to-Peer Time Slot Swapping App
 
-Quick start
+## Project Goal:
+**SlotSwapper** is a full-stack web application that enables users to swap their busy calendar slots with other users.  
+Users can mark certain events as **"Swappable"**, browse other users’ swappable slots, and request swaps.  
+If both parties accept, their time slots are exchanged automatically in both calendars.
 
-1) Backend
+###  Core Features
+- user authentication using **JWT**
+- CRUD operations for managing personal calendar events
+- Swap requests between users with Accept/Reject options
+- Dynamic state updates without page reloads
 
-- Create a `.env` file in `server/` with:
 
-```
-MONGODB_URI=mongodb://localhost:27017/servicehive
-JWT_SECRET=change_me
-PORT=4000
-CORS_ORIGIN=http://localhost:5173
-```
+### 🧠 Design Choices
+- **Backend:** Node.js + Expressjs
+- **Database:** MongoDB (via Mongoose)  
+- **Frontend:** React --Js 
+- **Authentication:** JWT tokens for stateless sessions  
 
-- Run the server:
 
-```
-cd server
+---
+
+## ⚙️ Setup Instructions
+
+### 🔹 Prerequisites
+Make sure you have:
+- [Node.js](https://nodejs.org/) and npm installed  
+- [MongoDB](https://www.mongodb.com/) running locally or via MongoDB Atlas  
+
+### 🔹 Backend Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/SlotSwapper.git
+cd SlotSwapper
+
+# Install backend dependencies
+npm install
+
+# Create a .env file in the root directory
+# Example .env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+
+# Run the backend server
 npm run dev
-```
-
-2) Frontend
-
-- Create `client/.env`:
-
-```
-VITE_API_BASE=http://localhost:4000
-```
-
-- Run the client:
-
-```
-cd client
-npm run dev
-```
-
-API overview
-
-- POST `/api/auth/signup` { name, email, password }
-- POST `/api/auth/login` { email, password }
-- GET `/api/events` (auth)
-- POST `/api/events` { title, startTime, endTime } (auth)
-- PUT `/api/events/:id` (auth)
-- DELETE `/api/events/:id` (auth)
-- POST `/api/events/:id/swappable` { swappable: boolean } (auth)
-- GET `/api/swappable-slots` (auth)
-- POST `/api/swap-request` { myEventId, targetEventId } (auth)
-- POST `/api/swap-response/:id` { action: 'ACCEPT'|'REJECT' } (auth)
-- GET `/api/swap-requests` (auth)
-
-Notes
-
-- Swap operations use MongoDB transactions; ensure your MongoDB supports them (replica set or recent local server).
-- Adjust `CORS_ORIGIN` if the frontend runs on a different host/port.
-
-
