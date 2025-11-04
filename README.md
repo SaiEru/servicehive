@@ -37,11 +37,11 @@ VITE_API_BASE=http://localhost:4000
 - Then you will get the Mongodb connected message in the command line
 
 ### Frontend
--open another terminal 
--cd client
--npm install
--npm run dev
--Then you will the get the deployed localhost link at port {env.PORT}
+- open another terminal 
+- cd client
+- npm install
+- npm run dev
+- Then you will the get the deployed localhost link at port {env.PORT}
 
 ## API Endpoints
 
@@ -61,4 +61,5 @@ VITE_API_BASE=http://localhost:4000
 Users cannot have overlapping events in their own calendars.  
 Only events marked as **SWAPPABLE** are visible to other users in the marketplace.  
 A swap request can only be made if both selected slots are currently **SWAPPABLE**.  
+
 
