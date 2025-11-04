@@ -19,29 +19,42 @@ If both parties accept, their time slots are exchanged automatically in both cal
 - **Authentication:** JWT tokens for stateless sessions  
 
 
----
+--- 
+**create server/.env** In this file add
+MONGODB_URI=mongodb://localhost:27017/projectname
+JWT_SECRET=generate token from online
+PORT=4000
+CORS_ORIGIN=http://localhost:5173
 
-## ⚙️ Setup Instructions
+**create client/.env** In this file add
+VITE_API_BASE=http://localhost:4000
 
-### 🔹 Prerequisites
-Make sure you have:
-- [Node.js](https://nodejs.org/) and npm installed  
-- [MongoDB](https://www.mongodb.com/) running locally or via MongoDB Atlas  
+### Backend 
+- open terminal
+- cd server
+- npm install
+- npm run dev
+- Then you will get the Mongodb connected message in the command line
 
-### 🔹 Backend Setup
-```bash
-# Clone the repository
-git clone https://github.com/your-username/SlotSwapper.git
-cd SlotSwapper
+### Frontend
+-open another terminal 
+-cd client
+-npm install
+-npm run dev
+-Then you will the get the deployed localhost link at port {env.PORT}
 
-# Install backend dependencies
-npm install
+## API Endpoints
 
-# Create a .env file in the root directory
-# Example .env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+| Method | Endpoint | Description |
+|--------|-----------|--------------|
+| **POST** | `/api/auth/signup` | Register a new user |
+| **POST** | `/api/auth/login` | Login user and generate JWT token |
+| **GET** | `/api/events` | Fetch all events for the logged-in user |
+| **POST** | `/api/events` | Create a new calendar event |
+| **PUT** | `/api/events/:id` | Update an event’s title, time, or status |
+| **DELETE** | `/api/events/:id` | Delete an existing event |
+| **GET** | `/api/swappable-slots` | Retrieve swappable slots from other users |
+| **POST** | `/api/swap-request` | Request a swap between two slots |
+| **POST** | `/api/swap-response/:id` | Accept or reject a swap request |
 
-# Run the backend server
-npm run dev
+
