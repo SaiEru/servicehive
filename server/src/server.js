@@ -9,7 +9,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*', credentials: true }));
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'https://servicehive-1.onrender.com', // frontend URL
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -35,4 +39,5 @@ connectToDatabase()
 		console.error('Failed to connect to DB', err);
 		process.exit(1);
 	});
+
 
