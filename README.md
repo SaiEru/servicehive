@@ -57,4 +57,8 @@ VITE_API_BASE=http://localhost:4000
 | **POST** | `/api/swap-request` | Request a swap between two slots |
 | **POST** | `/api/swap-response/:id` | Accept or reject a swap request |
 
+## Assumptions
+Users cannot have overlapping events in their own calendars.  
+Only events marked as **SWAPPABLE** are visible to other users in the marketplace.  
+A swap request can only be made if both selected slots are currently **SWAPPABLE**.  
 
